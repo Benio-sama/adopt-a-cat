@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  images: 
+  age: 1
+  gender: 1
+  stayed_or_neutered: false
+  tags: 
+
+two:
+  name: MyString
+  images: 
+  age: 1
+  gender: 1
+  stayed_or_neutered: false
+  tags: 
