@@ -1,16 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="adopt-container">
+  <div style="margin-bottom: 20px;">
+    <%= form_with url: "/adopt", method: :get, local: true do |form| %>
+      <%= form.label :tag, "Filter by tags / breed:" %>
+      <%= form.select :tag, options_for_select(["All", "Orange", "Tabby", "Tuxedo", "Cuddly", "Playful", "Calm"], params[:tag]), {}, { onchange: "this.form.submit();" } %>
+    <% end %>
+  </div>
 
-<% content_for :title, "Cats" %>
-
-<h1>Cats</h1>
-
-<div id="cats">
-  <% @cats.each do |cat| %>
-    <%= render cat %>
-    <p>
-      <%= link_to "Show this cat", cat %>
-    </p>
-  <% end %>
+  <div class="cat-grid">
+    <% @cats.each do |cat| %>
+      <%= link_to cat_details_path(cat.id || 1), class: "cat-card" do %>
+        <div class="cat-placeholder">
+          <% if cat.images.present? && cat.images.first.present? %>
+            <%= image_tag cat.images.first, alt: cat.name, style: "max-width: 100%; height: auto;" %>
+          <% else %>
+            <span>[ No pics ]</span>
+          <% end %>
+        </div>
+        <strong><%= cat.name %>, <%= cat.age %> yr old</strong><br>
+        <small><%= cat.gender == 0 ? "Male" : "Female" %> / <%= cat.spayed_or_neutered ? "Neutered" : "Not neutered" %></small><br>
+        
+        <small class="tags">
+          Tags: <%= cat.tags.join(", ") %>
+        </small>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New cat", new_cat_path %>

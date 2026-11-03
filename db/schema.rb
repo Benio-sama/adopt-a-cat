@@ -10,15 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_20_193140) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_02_233836) do
   create_table "cats", force: :cascade do |t|
     t.string "name"
     t.json "images"
     t.integer "age"
     t.integer "gender"
-    t.boolean "stayed_or_neutered"
+    t.boolean "spayed_or_neutered"
     t.json "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.json "desc"
+    t.index ["user_id"], name: "index_cats_on_user_id"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "cats", "users"
 end

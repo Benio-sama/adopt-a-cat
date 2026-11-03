@@ -22,6 +22,27 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
+  <header class="main-header">
+  <nav class="nav-links" >
+    <%= link_to "Adopt a Cat", "/home" %>
+    <div class="nav-div">
+      <li><%= link_to "Welcome", "/home" %></li>
+      <li><%= link_to "Adopt", "/adopt" %></li>
+      <li><%= link_to "About Us", "/about_us" %></li>
+    </div>
+
+    <span class="header-span">
+      <% if logged_in? %>
+        Logged in: <strong><%= current_user.name %></strong>
+        <%= link_to "Profile", "/users/edit" %>
+      <% else %>
+        <%= link_to "Login", "#" %>
+        <%= link_to "Signup", "/users/new" %>
+      <% end %>
+    </span>
+  </nav>
+</header>
+
   <body>
     <%= yield %>
   </body>

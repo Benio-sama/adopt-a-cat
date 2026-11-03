@@ -7,6 +7,7 @@ class CreateCats < ActiveRecord::Migration[8.1]
       t.integer :gender
       t.boolean :stayed_or_neutered
       t.json :tags
+      t.json :desc
 
       t.timestamps
     end

@@ -1,10 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<div class="images">
+  <% @cat.images.each do |img| %>
+    <div class="image">
+      <%= image_tag img, alt: @cat.name, style: "max-width: 100%; max-height: 100%;" %>
+    </div>
+  <% end %>
+</div>
 
-<%= render @cat %>
+<div class="cat-container">
+  <h2><%= @cat.name %> (<%= @cat.age %> yr old)</h2>
+  
+  <p><strong>About:</strong> <%= @cat.gender == 0 ? "Male" : "Female" %>, <%= @cat.spayed_or_neutered ? "Neutered" : "Not neutered" %></p>
+  
+  <div class="cat-container-tags">
+    <% @cat.tags.each do |tag| %>
+      <span class="cat-container-tag">#<%= tag %></span>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to "Edit this cat", edit_cat_path(@cat) %> |
-  <%= link_to "Back to cats", cats_path %>
+  <div class="desc">
+    <% @cat.desc.each do |paragraph| %>
+      <p><%= paragraph %></p>
+    <% end %>
+  </div>
 
-  <%= button_to "Destroy this cat", @cat, method: :delete %>
+  <div class="button-div">
+    <button class="adopt-button">Adopt</button>
+  </div>
 </div>

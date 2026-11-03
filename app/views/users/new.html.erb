@@ -1,0 +1,28 @@
+<div class="form-container">
+  <h1>Registration</h1>
+  <fieldset>
+    <legend>Register a new user</legend>
+    <%= form_for @user, url: '/users/create', method: :post do |form| %>
+      <div class="div-label">
+        <%= form.label :name, "Name:" %><br>
+        <%= form.text_field :name, size: 25, required: true %>
+      </div>
+      <div class="div-label">
+        <%= form.label :email, "Email:" %><br>
+        <%= form.text_field :email, size: 25, required: true %>
+      </div>
+      <div class="div-label">
+        <%= form.label :password, "Password:" %><br>
+        <%= form.password_field :password, size: 25 %>
+      </div>
+      <div class="div-label">
+        <%= form.label :password_confirmation, "Password again:" %><br>
+        <%= form.password_field :password_confirmation, size: 25 %>
+      </div>
+      <div>
+        <%= form.submit 'Register', style: "padding: 8px 18px; cursor: pointer;" %>
+      </div>
+    <% end %>
+  </fieldset>
+  <p style="margin-top: 15px;"><%= link_to "Back", :back %></p>
+</div>
