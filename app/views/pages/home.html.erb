@@ -1,3 +1,16 @@
-<h1>Home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<h1>coming soon</h1>
+<div class="home-container">
+  <h1>Welcome!</h1>
+  <p class="home-intro">Találd meg új doromboló családtagodat menhelyünkön!</p>
+
+  <div class="home-action">
+    <%= link_to "GET STARTED", "/adopt", class: "btn-get-started" %>
+  </div>
+
+  <div class="home-banner-container">
+    <% if Rails.root.join("app/assets/images/home.jpg").exist? %>
+      <%= image_tag "home.jpg", alt: "Adopt a Cat banner", class: "home-banner-img" %>
+    <% else %>
+      <span>[ Kép ]</span>
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,62 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-<h1>coming soon</h1>
+<div class="user-edit-container">
+  	<h1>Profile</h1>
+  	<fieldset class="user-fieldset">
+    	<legend>Edit user profile</legend>
+    	<%= form_for @user, url: update_profile_path, method: :put do |form| %>
+      		<div class="form-group">
+        	<%= form.label :name, "Név:" %>
+        	<%= form.text_field :name, size: 25 %>
+      	</div>	
+      	<div class="form-group">
+        	<%= form.label :email, "Email:" %>
+      		<%= form.text_field :email, size: 25 %>
+      	</div>
+      	<div class="form-group">
+        	<%= form.label :password, "Új jelszó:" %>
+            <%= form.password_field :password, size: 25 %>
+        </div>
+        <div class="form-group">
+            <%= form.label :password_confirmation, "Jelszó megerősítése:" %>
+            <%= form.password_field :password_confirmation, size: 25 %>
+        </div>
+        <div class="reserved-cats-section">
+            <h2>My Reserved Cats</h2>
+            <% if @user.cats.present? %>
+            <div class="reserved-cats-list">
+                <% @user.cats.each do |cat| %>
+                <div class="reserved-cat-card">
+                    <div class="reserved-cat-thumb">
+                    <% if cat.images.present? && cat.images.first.present? %>
+                        <%= image_tag cat.images.first, alt: cat.name %>
+                    <% else %>
+                        <span>[ Kép ]</span>
+                    <% end %>
+                    </div>
+                    <div class="reserved-cat-info">
+                        <strong><%= cat.name %></strong> (<%= cat.age %> éves)
+                        <div class="reserved-cat-tags">
+                            <% cat.tags.to_a.each do |tag| %>
+                            <span class="tag-badge">#<%= tag %></span>
+                            <% end %>
+                    </div>
+                    </div>
+                    <div class="reserved-cat-action">
+                        <%= link_to "View Cat", cat_details_path(cat.id), class: "btn-view-cat" %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <% else %>
+            <p class="no-cats-msg">Még nem foglaltál le egyetlen cicát sem.</p>
+            <% end %>
+        </div>
+      <div class="form-actions">
+        <%= form.submit "Update", class: "btn-submit" %>
+      </div>
+    <% end %>
+  </fieldset>
+
+	<div class="user-bottom-actions">
+    	<%= link_to "Logout", logout_path, class: "btn-logout" %>
+  	</div>
+</div>

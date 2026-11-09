@@ -1,9 +1,13 @@
 module ApplicationHelper
   def logged_in?
-    true
+    session[:user].present?
   end
 
   def current_user
-    @current_user ||= User.new(id: 1, name: "test", email: "test@test.hu")
+    @session_user
+  end
+
+  def is_admin?
+    false
   end
 end

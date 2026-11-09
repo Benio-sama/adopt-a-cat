@@ -1,15 +1,15 @@
 <div class="images">
   <% @cat.images.each do |img| %>
     <div class="image">
-      <%= image_tag img, alt: @cat.name, style: "max-width: 100%; max-height: 100%;" %>
+      <%= image_tag img, alt: @cat.name %>
     </div>
   <% end %>
 </div>
 
 <div class="cat-container">
-  <h2><%= @cat.name %> (<%= @cat.age %> yr old)</h2>
+  <h2><%= @cat.name %> (<%= @cat.age %> éves)</h2>
   
-  <p><strong>About:</strong> <%= @cat.gender == 0 ? "Male" : "Female" %>, <%= @cat.spayed_or_neutered ? "Neutered" : "Not neutered" %></p>
+  <p><strong>About:</strong> <%= @cat.gender == 0 ? "Fiú" : "Lány" %>, <%= @cat.spayed_or_neutered ? "Ivartalanított" : "Nem ivartalanított" %></p>
   
   <div class="cat-container-tags">
     <% @cat.tags.each do |tag| %>
@@ -24,6 +24,6 @@
   </div>
 
   <div class="button-div">
-    <button class="adopt-button">Adopt</button>
+    <%= button_to "Adopt", adopt_cat_path(@cat.id), method: :post, class: "adopt-button" %>
   </div>
 </div>
