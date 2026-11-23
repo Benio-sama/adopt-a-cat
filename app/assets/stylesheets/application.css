@@ -132,6 +132,16 @@ select {
     overflow: hidden;
 }
 
+.badge-adopted {
+    display: inline-block;
+    background-color: rgb(186, 186, 186);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
 /* #endregion /adopt cat */
 
 /* #region cat info */
@@ -203,6 +213,15 @@ select {
     cursor: pointer;
     background: #000;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-adopted {
+    padding: 10px 24px;
+    cursor: not-allowed;
+    background-color: #888;
+    color: white;
     border: none;
     border-radius: 4px;
 }
@@ -285,6 +304,7 @@ select {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
 }
 
 .user-bottom-actions {

@@ -22,6 +22,9 @@
         <small class="tags">
           Tags: <%= cat.tags.join(", ") %>
         </small>
+        <% if cat.user_id.present? %>
+          <span class="badge-adopted">Adopted</span>
+        <% end %>
       <% end %>
     <% end %>
   </div>
